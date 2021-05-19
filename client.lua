@@ -49,6 +49,7 @@ function CheckVehicleGround(ped)
         for i, v in pairs(banned_terrains) do
             if tostring(material) == tostring(banned_terrains[i]) then
                 isVehicleinBannedTerrain = true
+                break
             else
                 isVehicleinBannedTerrain = false
             end
@@ -57,13 +58,13 @@ function CheckVehicleGround(ped)
         if isVehicleinBannedTerrain then
             for i, v in pairs(allowed_vehicles) do
                 if tostring(allowed_vehicles[i]) ~= tostring(GetEntityModel(veh)) then
-                    --print("Wrong car, wrong terrain."..speed)
                     if tonumber(speed) > 1 then
                         cruise = GetEntitySpeed(veh)
                         if cruise > 60 then
                             cruise = 30
                         end
                         SetEntityMaxSpeed(veh, cruise - 1)
+                        break
                     end
                 end
             end
