@@ -1,5 +1,3 @@
-ESX = nil
-
 local debug = false
 
 local allowed_vehicles = {
@@ -18,20 +16,6 @@ local banned_terrains = {
     [9] = "951832588", -- 2d grass
     [10] = "-461750719" -- grass mountain
 }
-
-Citizen.CreateThread(
-    function()
-        while ESX == nil do
-            TriggerEvent(
-                "esx:getSharedObject",
-                function(obj)
-                    ESX = obj
-                end
-            )
-            Citizen.Wait(0)
-        end
-    end
-)
 
 Citizen.CreateThread(
     function()
